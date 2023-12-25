@@ -1,0 +1,9 @@
+spring:
+
+  main:
+    banner-mode: off
+    lazy-initialization: true
+
+  rsocket:
+    server:
+      port: 7000

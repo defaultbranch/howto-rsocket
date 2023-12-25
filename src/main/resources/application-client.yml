@@ -1,0 +1,9 @@
+spring:
+
+  main:
+    banner-mode: off
+    lazy-initialization: true
+
+  shell:
+    history:
+      enabled: false
