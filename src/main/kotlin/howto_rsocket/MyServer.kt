@@ -8,13 +8,9 @@ import org.springframework.shell.boot.ShellRunnerAutoConfiguration
 
 @Profile("server")
 @EnableAutoConfiguration(exclude = [ShellRunnerAutoConfiguration::class])
-class Server {
+class MyServer {
 
     @Bean
     @Scope("singleton")
     fun squareService() = SquareServiceImpl()
-
-    @Bean
-    @Scope("singleton")
-    fun server() = SquareServiceServer(squareService())
 }

@@ -8,7 +8,7 @@ import org.springframework.shell.standard.ShellMethod
 
 @Profile("client")
 @ShellComponent  // consider putting this into a separate class (like a controller)
-class Client {
+class MyClient {
 
     @ShellMethod("compute the square of a number")
     fun square(x: Double) {
@@ -16,7 +16,7 @@ class Client {
     }
 
     companion object {
-        val LOG: Logger = LoggerFactory.getLogger(Client::class.java)
+        val LOG: Logger = LoggerFactory.getLogger(MyClient::class.java)
     }
 
 }

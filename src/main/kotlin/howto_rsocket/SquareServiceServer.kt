@@ -1,6 +1,7 @@
 package howto_rsocket
 
-import howto_rsocket.SquareService.RealNumber
+import org.slf4j.Logger
+import org.slf4j.LoggerFactory
 import org.springframework.messaging.handler.annotation.MessageMapping
 import org.springframework.stereotype.Controller
 import reactor.core.publisher.Mono
@@ -10,10 +11,14 @@ class SquareServiceServer(
     private val squareService: SquareService
 ) {
 
-    @MessageMapping("square")
-    fun square(x: RealNumber): Mono<RealNumber> {
+    @MessageMapping("my-square")
+    fun square(x: Double): Mono<Double> {
+        LOG.info("computing the square of $x")
         return Mono.just(this.squareService.square(x))
     }
 
+    companion object {
+        val LOG: Logger = LoggerFactory.getLogger(SquareServiceServer::class.java)
+    }
 
 }
