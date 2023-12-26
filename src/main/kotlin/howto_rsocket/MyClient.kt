@@ -1,8 +1,9 @@
 package howto_rsocket
 
-import org.slf4j.Logger
-import org.slf4j.LoggerFactory
+import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.context.annotation.Profile
+import org.springframework.messaging.rsocket.RSocketRequester
+import org.springframework.messaging.rsocket.retrieveMono
 import org.springframework.shell.standard.ShellComponent
 import org.springframework.shell.standard.ShellMethod
 
@@ -10,13 +11,16 @@ import org.springframework.shell.standard.ShellMethod
 @ShellComponent  // consider putting this into a separate class (like a controller)
 class MyClient {
 
-    @ShellMethod("compute the square of a number")
-    fun square(x: Double) {
-        LOG.info("the square of $x is ${x * x}")  // this I want to do remote
-    }
+    @Autowired
+    private lateinit var builder: RSocketRequester.Builder
 
-    companion object {
-        val LOG: Logger = LoggerFactory.getLogger(MyClient::class.java)
-    }
+    @ShellMethod("compute the square of a number")
+    fun square(x: Double): String = builder
+        .tcp("localhost", 7000)
+        .route("my-square")
+        .data(x)
+        .retrieveMono<Double>()
+        .block()
+        .toString()
 
 }

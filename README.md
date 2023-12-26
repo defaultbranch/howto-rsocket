@@ -17,8 +17,15 @@ rsocket-cli --request tcp://localhost:7000 --route my-square --input 25
 
 # Test Server and Client
 
-Run the client from the command line:
+Start the client from the command line:
 
 ```
 java -Dspring.profiles.active=client -jar target/howto-rsocket-0.0.1-SNAPSHOT.jar
+```
+
+Submit a request:
+
+```
+shell:> square 16
+256.0
 ```
