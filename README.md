@@ -1,25 +1,21 @@
-
-_** WORK In PROGRESS **_ 
+_** WORK In PROGRESS **_
 
 # Usage
 
 Build:
+
 ```
-mvn package
+mvn clean package
 ```
 
 Run the server from the command line:
+
 ```
-java -cp target/howto-rsocket-0.0.1-SNAPSHOT.jar \
-     -Dloader.main=howto_rsocket.MyServerKt \
-     -Dspring.profiles.active=server \
-     org.springframework.boot.loader.launch.PropertiesLauncher
+java -Dspring.profiles.active=server -jar target/howto-rsocket-0.0.1-SNAPSHOT.jar
 ```
 
 Run the client from the command line:
+
 ```
-java -cp target/howto-rsocket-0.0.1-SNAPSHOT.jar \
-     -Dloader.main=howto_rsocket.MyClientKt \
-     -Dspring.profiles.active=client \
-     org.springframework.boot.loader.launch.PropertiesLauncher
+java -Dspring.profiles.active=client -jar target/howto-rsocket-0.0.1-SNAPSHOT.jar
 ```

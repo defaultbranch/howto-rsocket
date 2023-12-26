@@ -2,5 +2,7 @@ package howto_rsocket
 
 interface SquareService {
 
-    fun square(x: Double): Double
+    data class RealNumber(val value: Double)
+
+    fun square(x: RealNumber): RealNumber
 }

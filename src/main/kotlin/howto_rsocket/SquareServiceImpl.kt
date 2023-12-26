@@ -1,5 +1,7 @@
 package howto_rsocket
 
-class SquareServiceImpl: SquareService {
-    override fun square(x: Double) = x*x
+import howto_rsocket.SquareService.RealNumber
+
+class SquareServiceImpl : SquareService {
+    override fun square(x: RealNumber) = RealNumber(x.value * x.value)
 }
